@@ -11,7 +11,10 @@ export class HeaderComponent implements OnInit {
 
   constructor(public _info: InfoPaginaService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  buscarProducto(termino: String) {
+    console.log(termino);
   }
 
 }
