@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../interfaces/producto.interface';
-import { timeout, Promise, reject } from 'q';
-import { resolve } from 'path';
 import { forEach } from '@angular/router/src/utils/collection';
 
 @Injectable({
@@ -22,8 +20,7 @@ export class ProductosService {
 
   private cargarProductos() {
 
-    return new Promise((resolve, reject) => {
-
+    return new Promise( (resolve, reject) => {
       this.http.get('https://angular-html-89d1e.firebaseio.com/productos_idx.json')
              .subscribe((resp: Producto[]) => {
 
@@ -33,7 +30,6 @@ export class ProductosService {
                 resolve();
 
              });
-
     });
   }
 
@@ -63,6 +59,7 @@ export class ProductosService {
   }
 
   private filtrarProductos(termino: string) {
+    // console.log(this.productos);
 
     this.productosFiltrado = [];
     termino = termino.toLocaleLowerCase();
